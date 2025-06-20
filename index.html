@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Para Ti 💌</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #fbc2eb, #a6c1ee);
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 60px;
+      color: #fff;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.5em;
+      margin-bottom: 40px;
+    }
+    .btn {
+      background-color: #fff;
+      color: #a64ac9;
+      padding: 15px 25px;
+      margin: 10px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #fbc2eb;
+    }
+    .respuesta {
+      font-size: 1.4em;
+      margin-top: 30px;
+      display: none;
+    }
+    a {
+      color: #fff;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+
+    /* Corazones animados */
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      transform: rotate(45deg);
+      animation: float 10s infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-800px) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Hola otra vez 💬</h1>
+  <p>Quisiera hacer unas preguntas</p>
+
+  <button class="btn" onclick="responder(true)">Sí</button>
+  <button class="btn" onclick="responder(false)">No</button>
+
+  <div id="respuesta" class="respuesta"></div>
+
+  <!-- Corazones animados -->
+  <script>
+    function responder(acepta) {
+      const mensaje = document.getElementById('respuesta');
+      if (acepta) {
+        mensaje.innerHTML = `Puedes contestar esto ☺️<br><br>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSc0XE2F5Y0BTKBeMThITr15MzlWf7w70j2WvDzRY2FZV-lBFw/viewform?usp=header" target="_blank">
+          Haz clic aquí, mi persona especial 💖
+        </a>`;
+      } else {
+        mensaje.textContent = "Bueno 😞";
+      }
+      mensaje.style.display = 'block';
+    }
+
+    // Crear corazones flotantes
+    for (let i = 0; i < 30; i++) {
+      let heart = document.createElement("div");
+      heart.className = "heart";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 5 + 5) + "s";
+      document.body.appendChild(heart);
+    }
+  </script>
+</body>
+</html>
